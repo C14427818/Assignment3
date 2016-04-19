@@ -1,0 +1,25 @@
+
+    Minim Jam;
+    AudioPlayer audio;
+
+    int x = 50;
+    int y = 200;
+    int playerDirection = RIGHT;
+    int compX = 350;
+    int compY = 200;
+    int compDirection = LEFT;
+    int changeDirection = 2;
+
+    public boolean gameOver=false;//For game to keep playing until a crash
+
+    public void setup(){
+
+        Jam = new Minim(this);
+        audio = Jam.loadFile("Jam.mp3");
+        size(400, 400);
+        background(0);
+        frameRate(60);
+    }
+
+
+
