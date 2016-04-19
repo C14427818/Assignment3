@@ -22,4 +22,23 @@
     }
 
 
+    public void draw(){
+
+        stroke(56, 36, 255);
+        if (gameOver == true)
+        {
+            stroke(27, 217, 222);
+            text("GAME OVER", 210, 130);
+        }
+        else
+        {
+            Player();
+            if (gameOver == false)
+            {
+                computerPlayer();
+            }
+        }
+
+
+    }
 
