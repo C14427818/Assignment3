@@ -39,6 +39,191 @@
             }
         }
 
+    }
+    
+    void Player(){
+
+        if (get(x, y) != color(0, 0, 0)){
+
+            gameOver = true;
+            textSize(20);
+            stroke(27, 217, 222);
+            text("You Suck!", 210, 150);
+            text("Click mouse",210 , 170);
+            text("to Restart",210 , 190);
+            fill(238,218,0);
+            ellipse(150,150,100,100);
+            fill(0,0,0);
+            rect(125,125,10,25);
+            rect(165,125,10,25);
+            rect(125,170,50,10);
+            fill(27, 217, 222);
+
+        }
+        stroke(27, 217, 222);
+        point(x, y);
+        audio.play();
+
+        if (playerDirection == RIGHT)
+        {
+            x++;
+        }
+        else
+        {
+            if (playerDirection == LEFT)
+            {
+                x--;
+            }
+            if (playerDirection == UP)
+            {
+                y--;
+            }
+            if (playerDirection == DOWN)
+            {
+                y++;
+            }
+        }
+    }
+
+
+    public void keyPressed(){
+
+        if (key == 'a')
+        {
+            playerDirection = LEFT;
+        }
+        else if (key == 'd')
+        {
+            playerDirection = RIGHT;
+        }
+        else if (key == 'w')
+        {
+            playerDirection = UP;
+        }
+        else if (key == 's')
+        {
+            playerDirection = DOWN;
+        }
 
     }
+
+
+    void computerPlayer(){
+
+        if (get(compX, compY) != color(0, 0, 0))
+        {
+            gameOver = true;
+            textSize(20);
+            stroke(27, 217, 222);
+            text("Victory!", 210, 160);
+        }
+
+        stroke(224, 217, 27);
+        point(compX, compY);
+
+        //Change direction each time game is restarted
+        if( changeDirection % 2 == 0){
+
+            if (compDirection == RIGHT)
+            {
+                compX++;
+                if (get(compX+1, compY) !=color(0, 0, 0))
+                {
+                    compDirection = UP;
+                }
+            }
+            else
+            {
+                if (compDirection == LEFT)
+                {
+                    compX--;
+                    if (get(compX-1, compY) !=color(0, 0, 0))
+                    {
+                        compDirection = DOWN;
+                    }
+                }
+                if (compDirection == UP)
+                {
+                    compY--;
+                    if (get(compX, compY-1) !=color(0, 0, 0))
+                    {
+                        compDirection = LEFT;
+                    }
+                }
+                if (compDirection == DOWN)
+                {
+                    compY++;
+                    if (get(compX, compY+1) !=color(0, 0, 0))
+                    {
+                        compDirection = RIGHT;
+                    }
+                }
+            }
+
+        } else{
+
+            if (compDirection == RIGHT)
+            {
+                compX++;
+                if (get(compX+1, compY) !=color(0, 0, 0))
+                {
+                    compDirection = DOWN;
+                }
+            }
+            else
+            {
+                if (compDirection == LEFT)
+                {
+                    compX--;
+                    if (get(compX-1, compY) !=color(0, 0, 0))
+                    {
+                        compDirection = UP;
+                    }
+                }
+                if (compDirection == UP)
+                {
+                    compY--;
+                    if (get(compX, compY-1) !=color(0, 0, 0))
+                    {
+                        compDirection = RIGHT;
+                    }
+                }
+                if (compDirection == DOWN)
+                {
+                    compY++;
+                    if (get(compX, compY+1) !=color(0, 0, 0))
+                    {
+                        compDirection = LEFT;
+                    }
+                }
+
+            }
+
+        }
+
+
+    }
+
+
+    public void mousePressed()
+    {
+        if (mousePressed = true)
+
+        {
+            background(0);
+            x = 50;
+            y = 200;
+            playerDirection = RIGHT;
+            compX = 350;
+            compY = 200;
+            compDirection = LEFT;
+            gameOver = false;
+            changeDirection ++;
+
+
+        }
+    }
+
+
+
 
